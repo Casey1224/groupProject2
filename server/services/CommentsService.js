@@ -1,5 +1,5 @@
 import { dbContext } from "../db/DbContext"
-import {threadsService} from "../services/ThreadsService"
+import {threadsService} from "./ThreadsService"
 
 
 

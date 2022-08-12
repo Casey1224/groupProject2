@@ -7,7 +7,7 @@ class AppState extends EventEmitter {
   account = {}
   /** @type {import('./Models/Value').Value[]} */
   values = []
-  /** @type {import('./Models/Thread.js').Thread[]} */
+  /** @type {import('./Models/Thread').Thread[]} */
   threads = []
 
 }

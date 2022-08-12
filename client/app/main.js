@@ -1,9 +1,11 @@
 import { AuthController } from './Controllers/AuthController.js'
-import { ValuesController } from './Controllers/ValuesController.js'
+import { ThreadsController } from './Controllers/ThreadsController.js';
+
 
 class App {
   authController = new AuthController();
-  valuesController = new ValuesController();
+
+  threadsController = new ThreadsController()
 }
 
 // @ts-ignore

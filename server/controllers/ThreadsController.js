@@ -11,7 +11,7 @@ export class ThreadsController extends BaseController {
             .get('', this.getAll)
             .get('/:id', this.getById)
             .use(Auth0Provider.getAuthorizedUserInfo)
-            .get('/:id/comments', this.getCommentsById)
+            .get('/:id/comments', this.getThreadCommentsById)
             .post('', this.create)
             .delete('/:id', this.remove)
 
@@ -61,9 +61,9 @@ export class ThreadsController extends BaseController {
 
         }
     }
-    async getCommentsById(req, res, next) {
+    async getThreadCommentsById(req, res, next) {
         try {
-            const comment = await commentsService.getCommentsById(req.params.id)
+            const comment = await commentsService.getThreadCommentsById(req.params.id)
             return res.send(comment)
         } catch (error) {
             next(error)

@@ -1,6 +1,7 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { commentsService } from "../services/CommentsService";
 import BaseController from "../utils/BaseController";
+import { logger } from "../utils/Logger.js";
 
 export class CommentsController extends BaseController {
     constructor() {
@@ -8,6 +9,7 @@ export class CommentsController extends BaseController {
         this.router
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.create)
+            .delete('/:id', this.remove)
 
     }
 
@@ -21,6 +23,17 @@ export class CommentsController extends BaseController {
             next(error)
         }
     }
+    async remove(req, res, next) {
+        try {
+            const commentId = req.params.id
 
+            await commentsService.remove(commentId)
+            return res.send("This comment has been deleted")
+        } catch (error) {
+            logger.log(error)
+            next(error)
+
+        }
+    }
 
 }

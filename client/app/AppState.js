@@ -7,7 +7,9 @@ class AppState extends EventEmitter {
   account = {}
   /** @type {import('./Models/Value').Value[]} */
   values = []
-  socketData = []
+  /** @type {import('./Models/Thread.js').Thread[]} */
+  threads = []
+
 }
 
 export const ProxyState = new Proxy(new AppState(), {

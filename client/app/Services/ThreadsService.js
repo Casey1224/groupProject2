@@ -9,6 +9,7 @@ class ThreadsService {
         let res = await api.post('/api/threads', newThread)
         let thread = new Thread(res.data)
         ProxyState.threads = [...ProxyState.threads, thread]
+
     }
 
     async getThreads() {

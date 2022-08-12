@@ -2,20 +2,21 @@ import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { logger } from '../utils/Logger'
 import { threadsService } from '../services/ThreadsService'
+import { commentsService } from '../services/CommentsService.js'
 
 export class ThreadsController extends BaseController {
-    constructor(){
+    constructor() {
         super('api/threads')
-        this.router 
+        this.router
             .get('', this.getAll)
             .get('/:id', this.getById)
-            // .use(Auth0Provider.getAuthorizedUserInfo)
-            // .get('/:id/comments', this.getCommentsOnThread)
+            .use(Auth0Provider.getAuthorizedUserInfo)
+            .get('/:id/comments', this.getCommentsById)
             .post('', this.create)
-            .delete('/:id', this.remove)            
+            .delete('/:id', this.remove)
 
     }
-    
+
     async getAll(req, res, next) {
         try {
             const query = req.query
@@ -35,7 +36,7 @@ export class ThreadsController extends BaseController {
         } catch (error) {
             logger.log(error)
             next(error)
-            
+
         }
     }
     async remove(req, res, next) {
@@ -47,18 +48,26 @@ export class ThreadsController extends BaseController {
         } catch (error) {
             logger.log(error)
             next(error)
-            
+
         }
     }
-    
+
     async getById(req, res, next) {
         try {
             const thread = await threadsService.getById(req.params.id)
             return res.send(thread)
         } catch (error) {
             logger.log(error)
-            
+
         }
-    }    
+    }
+    async getCommentsById(req, res, next) {
+        try {
+            const comment = await commentsService.getCommentsById(req.params.id)
+            return res.send(comment)
+        } catch (error) {
+            next(error)
+        }
+    }
 
 }

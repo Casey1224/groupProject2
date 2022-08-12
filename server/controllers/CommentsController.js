@@ -4,9 +4,8 @@ import BaseController from "../utils/BaseController";
 
 export class CommentsController extends BaseController {
     constructor() {
-        super('api/comments')
+        super('/api/comments')
         this.router
-            .get('',this.getCommentsById)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.create)
 
@@ -23,12 +22,5 @@ export class CommentsController extends BaseController {
         }
     }
 
-    async getCommentsById(req, res, next) {
-        try {
-            const comment = await commentsService.getCommentsById(req.params.id)
-            return res.send(comment)
-        } catch (error) {
-            next(error)
-        }
-    }
+
 }

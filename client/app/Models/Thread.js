@@ -1,4 +1,6 @@
 
+
+
 export class Thread {
     constructor(data) {
         this.img = data.img

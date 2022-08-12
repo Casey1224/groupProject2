@@ -15,7 +15,7 @@ export class CommentsController extends BaseController {
         try {
             let commentData = req.body
             // commentData. TODO
-            let newComment = await commmentsService.create(commentData)
+            let newComment = await commentsService.create(commentData)
             res.send(commentData)
         } catch (error) {
             next(error)

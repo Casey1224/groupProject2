@@ -12,11 +12,10 @@ export class ThreadsController extends BaseController {
             // .use(Auth0Provider.getAuthorizedUserInfo)
             // .get('/:id/comments', this.getCommentsOnThread)
             .post('', this.create)
-            .delete('/:id', this.remove)
-
-            
+            .delete('/:id', this.remove)            
 
     }
+    
     async getAll(req, res, next) {
         try {
             const query = req.query
@@ -51,11 +50,15 @@ export class ThreadsController extends BaseController {
             
         }
     }
-
-
     
-    getById(arg0, getById) {
-        
+    async getById(req, res, next) {
+        try {
+            const thread = await threadsService.getById(req.params.id)
+            return res.send(thread)
+        } catch (error) {
+            logger.log(error)
+            
+        }
     }    
 
 }

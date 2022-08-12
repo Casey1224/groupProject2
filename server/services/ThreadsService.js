@@ -3,6 +3,14 @@ import { dbContext } from '../db/DbContext'
 import { BadRequest, Forbidden } from '../utils/Errors'
 
 class ThreadsService {
+    
+    async getById(id) {
+        const thread = await dbContext.Threads.findById(id).populate('creatorInfo')
+        if (!thread) {
+            throw new BadRequest("Invalid Thread ID")
+        }
+        return thread
+    }
     async remove(threadId) {
         const thread = await this.getById(threadId)
         // if(thread.creatorId.toString() !== userId) {

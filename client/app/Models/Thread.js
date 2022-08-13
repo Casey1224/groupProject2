@@ -14,9 +14,9 @@ export class Thread {
 
     get ThreadTemplate() {
         return `
-        <div class="col-md-5 p-2 text-center bg-white m-1 border-2"> <img class="threadImg"
+        <div class="col-md-5 p-2 text-center m-1 border-5"> <img class="threadImg"
             src="${this.img}"
-            alt=""> <p>${this.description}</p><button class="btn rounded bg-secondary" onclick="app.threadsController.delete('${this.id}')">Delete</button>
+            alt=""> <p class="text-light fs-3 bg-dark">${this.description}</p><button class="btn rounded bg-secondary" onclick="app.threadsController.delete('${this.id}')">Delete</button>
 
             <div class="row">
                 
@@ -32,8 +32,8 @@ export class Thread {
         if (template) {
             return template
         }
-        
-}
+
+    }
 
 }
 

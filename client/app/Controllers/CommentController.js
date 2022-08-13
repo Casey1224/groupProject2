@@ -9,16 +9,16 @@ function _drawComments() {
 export class CommentController{
     constructor() {
         console.log('comment controller loaded');
-        ProxyState.on('comments', _drawComments)
+        
     }
 
-    async createComment() {
-        try {
-            event.preventDefault()
-            const form = event.target
-            
-        } catch (error) {
-            
+    async createComment(threadId) {
+        window.event.preventDefault()
+        let form = window.event.target
+        let newComment = {
+            text: form.text.value
         }
+        console.log(newComment)
+        commentService.createComment(newComment)
     }
 }

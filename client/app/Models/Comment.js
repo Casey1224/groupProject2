@@ -7,7 +7,9 @@ export class Comment{
 
     get Template() {
         return `
+        
         <div>${this.text}</div>
+
         `
     }
     

@@ -19,9 +19,10 @@ class ThreadsService {
 
     async getThreads() {
         let res = await api.get('/api/threads')
-
+console.log(res.data)
 
         ProxyState.threads = res.data.map(t => new Thread(t))
+        console.log(ProxyState.threads);
 
     }
 

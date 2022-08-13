@@ -1,13 +1,16 @@
 .threadImg{
     height: 300px;
     width: 300px;
-    border-radius: 20%;
-    
+    border-radius: 20%;    
 }
 body{
     background-image: url('https://images.unsplash.com/photo-1506508618093-6fe5ce3def4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2Fyb29uJTIwYmFja2dyb3VuZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
     background-position: center;
-    background-size: cover;
-    
+    background-size: cover;    
+}
+
+#test-threads{
+    position: fixed;
+    left: 0;
 }
 

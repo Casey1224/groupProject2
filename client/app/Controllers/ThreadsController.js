@@ -5,8 +5,14 @@ import { Pop } from "../Utils/Pop.js";
 function _drawThreads() {
     let template = ''
     ProxyState.threads.forEach(t => template += t.ThreadTemplate)
+    console.log('what is the template?', template);
     // @ts-ignore
-    document.getElementById('threads').innerHTML = template
+    const elem = document.getElementById('threads')
+    if (!elem) {
+        throw new Error('Invalid ID')
+    }
+    console.log('what is the elem', elem)
+    elem.innerHTML = template
 
 }
 
@@ -19,7 +25,6 @@ export class ThreadsController {
         ProxyState.on('threads', _drawThreads)
         this.getThreads()
 
-        console.log('Controller is working', this.getThreads);
     }
 
     async getThreads() {

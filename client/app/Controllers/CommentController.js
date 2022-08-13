@@ -2,14 +2,15 @@ import { ProxyState } from "../AppState.js";
 import { commentService } from "../Services/CommentService.js"
 import { Pop } from "../Utils/Pop.js";
 
-function _drawComments() { 
+function _drawComments() {
 
 }
 
-export class CommentController{
+export class CommentController {
     constructor() {
         console.log('comment controller loaded');
-        
+
+
     }
 
     async createComment(threadId) {
@@ -21,4 +22,6 @@ export class CommentController{
         console.log(newComment)
         commentService.createComment(newComment)
     }
+
+
 }

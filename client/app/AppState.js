@@ -10,6 +10,8 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Thread').Thread[]} */
   threads = []
 
+  comments =[]
+
 }
 
 export const ProxyState = new Proxy(new AppState(), {

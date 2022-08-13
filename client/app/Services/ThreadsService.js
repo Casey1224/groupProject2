@@ -5,6 +5,11 @@ import { api } from "./AxiosService.js"
 
 
 class ThreadsService {
+    async deleteThread(threadId) {
+        let url = `api/threads/${threadId}`
+        await api.delete(url)
+        ProxyState.threads= ProxyState.threads.filter(t => t.id !=threadId)
+    }
     async createThread(newThread) {
         let res = await api.post('/api/threads', newThread)
         let thread = new Thread(res.data)

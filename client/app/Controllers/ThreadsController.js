@@ -52,4 +52,13 @@ export class ThreadsController {
         }
     }
 
+    async delete(threadId) {
+        try {
+            await threadsService.deleteThread(threadId)
+        } catch (error) {
+            console.error('Delete Thread', error)
+            Pop.error(error)
+        }
+    }
+
 }

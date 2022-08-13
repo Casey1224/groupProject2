@@ -9,8 +9,8 @@ class AppState extends EventEmitter {
   values = []
   /** @type {import('./Models/Thread').Thread[]} */
   threads = []
-
-  comments =[]
+/** @type {import('./Models/Comment').Comment[]} */
+  comments=[]
 
 }
 

@@ -7,6 +7,7 @@ export class CommentsController extends BaseController {
     constructor() {
         super('/api/comments')
         this.router
+            .get('', this.getComments)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.create)
             .delete('/:id', this.remove)
@@ -33,6 +34,15 @@ export class CommentsController extends BaseController {
             logger.log(error)
             next(error)
 
+        }
+    }
+
+    async getComments(req, res, next) {
+        try {
+            let comments = await commentsService.getComments()
+            res.send(comments)
+        } catch (error) {
+            next(error)
         }
     }
 

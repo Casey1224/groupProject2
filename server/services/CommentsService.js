@@ -35,6 +35,11 @@ class CommentsService {
         return comment
     }
 
+    async getComments() {
+        const comments = await dbContext.Comments.find()
+        return comments
+    }
+
 }
 
 
